@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<uexplugins>
+      <plugin
+        className="org.zywx.wbpalmstar.plugin.uexLocalNotification.EUexLocalNotify"
+        uexName="uexLocalNotification" >
+        <method name="add" />
+        <method name="removeAll" />
+        <method name="remove" />
+    </plugin>
+    
+</uexplugins>

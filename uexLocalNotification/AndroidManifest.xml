@@ -1,0 +1,60 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="org.zywx.wbpalmstar.widgetone.uexlocalnotification"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="15" />
+
+    <application
+        android:name="org.zywx.wbpalmstar.widgetone.WidgetOneApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <activity
+            android:name="org.zywx.wbpalmstar.engine.EBrowserActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:theme="@style/browser_main_theme"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- uexLocalNotify -->
+        <receiver
+		android:name="org.zywx.wbpalmstar.plugin.uexLocalNotification.EAlarmReceiver">
+        <intent-filter>
+            <action android:name="alarm_1" />
+			<action android:name="alarm_2" />
+			<action android:name="alarm_3" />
+			<action android:name="alarm_4" />
+			<action android:name="alarm_5" />
+			<action android:name="alarm_6" />
+			<action android:name="alarm_7" />
+			<action android:name="alarm_8" />
+			<action android:name="alarm_9" />
+			<action android:name="alarm_10" />
+			<action android:name="android.intent.action.TIME_SET" />
+            <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            <action android:name="android.intent.action.LOCALE_CHANGED" />
+            <action android:name="android.intent.action.BOOT_COMPLETED" />
+         </intent-filter>
+    </receiver>
+	</application>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+   <!-- uexLocalNotify -->
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+   </manifest>
