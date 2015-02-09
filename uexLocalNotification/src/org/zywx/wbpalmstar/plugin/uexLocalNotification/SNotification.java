@@ -25,7 +25,7 @@ public class SNotification {
 		int iconId = EUExUtil.getResDrawableID("icon");
 		Notification notification = new Notification(iconId, alerm.title,
 				System.currentTimeMillis());
-
+		notification.flags = Notification.FLAG_AUTO_CANCEL;
 		String ringName = alerm.mode;
 		if (null != ringName && 0 != ringName.length()) {
 			if (ringName.equals("system")) {
@@ -39,8 +39,8 @@ public class SNotification {
 				contentIntent);
 		NotificationManager mMgr = (NotificationManager) context
 				.getSystemService(Context.NOTIFICATION_SERVICE);
-		// mId++;
 		mMgr.notify(mId, notification);
+		EUexLocalNotify.addToMap(alerm.notifyId, mId);
 		Log.e("==notification==", "===notification=end=");
 	}
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexLocalNotification" version="3.0.4" build="4">
+        uexName="uexLocalNotification" version="3.0.5" build="5">
+		<info>5:解决查看通知后通知不关闭的问题，解决不能删除本地通知的问题</info>
 		<info>4:解决铃声不响问题</info>
 		<build>3:解决铃声周期循环问题</build>
 		<build>2:修复在点击弹出菜单时报错问题</build>

@@ -2,19 +2,31 @@ package org.zywx.wbpalmstar.plugin.uexLocalNotification;
 
 
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.zywx.wbpalmstar.engine.EBrowserView;
 import org.zywx.wbpalmstar.engine.universalex.EUExBase;
 import org.zywx.wbpalmstar.engine.universalex.EUExUtil;
+
+import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
 
 public class EUexLocalNotify extends EUExBase {
 	private static final String TAG="jsonData";
+	private NotificationManager notificationManager;
+	private static Map<String, Integer> map = new HashMap<String, Integer>();
 	
 	public EUexLocalNotify(Context context, EBrowserView inParent) {
 		super(context, inParent);
+		notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 	}
 	
+	public static void addToMap(String notifyId, int id) {
+		map.put(notifyId, id);
+	}
+
 	public void add(String[] parm){
 		if(parm.length < 8){
 			return;
@@ -62,15 +74,30 @@ public class EUexLocalNotify extends EUExBase {
 	public void remove(String[] parm){
 		String nId = parm[0];
 		EAlarmReceiver.cancelAlerm(mContext, nId+mContext.getPackageName());
+		if(map != null && map.containsKey(nId)) {
+			int id = map.get(nId);
+			map.remove(nId);
+			if(notificationManager != null) {
+				notificationManager.cancel(id);
+			}
+		}
 	}
 	
 	public void removeAll(String[] parm){
 		EAlarmReceiver.cancelAlermAll(mContext);
+		if(notificationManager != null) {
+			notificationManager.cancelAll();
+			if(map != null) {
+				map.clear();
+			}
+		}
 	}
 	
 	@Override
 	protected boolean clean() {
-		
+		if(map != null) {
+			map.clear();
+		}
 		return false;
 	}
 }
